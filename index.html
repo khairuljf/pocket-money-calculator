@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  
+    <title>Simple Pocket Money Calculate</title>
+    <link rel="stylesheet" href="css/style.css">
+
+            <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:400,500,700" rel="stylesheet">
+  </head>
+  <body onload="onload_funstions()" >
+    
+
+    <div class="container">
+        <h1 class="app-heading">Simple Pocket Money Calculator</h1>
+        
+        <div class="row">
+            <div class="wide-half">
+                    <form id="addMoneyform">
+                        <div class="form-group">
+                                <label for="">Add your total money</label>
+                            <input class="form-control" type="number" id="addMoney" placeholder="Add your money">
+                        </div>
+                        <input type="submit" value="Add Money" class="btn btn-success">
+                    </form>
+                  
+                    <h1>Account : <span id="current-account" ></span></h1>
+            </div>
+            <div class="wide-half">
+                <div class="from-container">
+                    <form id="reduceMoneyForm">
+                        <div class="form-group">
+                            <label for="">Reduce item price</label>
+                            <input class="form-control" type="number" id="reduceMoney" placeholder="Reduce Ammout">
+                        </div>
+                        <div class="form-group">
+                            <label for="reduceMoney">Reduce item purpose</label>
+                            <input class="form-control" type="text" id="investReason" placeholder="Reduce purpose">
+                        </div>
+                            <button class="btn btn-secondary" id="formSubmit" type="submit">Add in list</button>
+                            
+                    </form>
+                    <button type="button" id="resetData" class="btn btn-danger">Reset</button>
+                </div>
+            </div>
+        </div>
+        
+
+        
+    </div>
+    <div class="container">
+                
+          <div id="output">
+                <label id="orderchange"  class="orderchange">Order By : <strong>ASC / DESC</strong>
+                     <label class="switch"> 
+                        <input type="checkbox" onclick="checkOrder()"  id="orderListCheck">
+                        <span class="slider round"></span>
+                     </label>
+                </label>
+                      
+    
+            <div id="listTable">
+                <table class="table table-hover">
+                        <thead>
+                            <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Date</th>
+                            <th scope="col">Time</th>
+                            <th scope="col">Purpose</th>
+                            <th scope="col">Ammout</th>
+                            </tr>
+                        </thead>
+                        <tbody id="itemlist" onload="fetchItemCustom();">
+                    
+                        </tbody>
+                </table>
+            </div>
+                      <h4 id="resetinfo"></h4>
+                      <button id="loadMoreItem"  onclick="fetchItem()">Load More</button>
+          </div>
+    </div>
+
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>
