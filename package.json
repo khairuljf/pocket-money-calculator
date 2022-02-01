@@ -10,5 +10,8 @@
   "license": "ISC",
   "devDependencies": {
     "gulp": "^3.9.1"
+  },
+  "dependencies": {
+    "uuid": "^8.3.2"
   }
 }

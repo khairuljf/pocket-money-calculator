@@ -56,9 +56,7 @@ body {
 }
 
 #output {
-  border-top: 2px solid gray;
   padding-top: 10px;
-  width: 90%;
   /* Rounded sliders */
 }
 

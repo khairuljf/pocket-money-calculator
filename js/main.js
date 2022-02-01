@@ -1,4 +1,6 @@
 
+
+
 // Select query
 document.getElementById('addMoneyform').addEventListener('submit', addMoneyCb);
 
@@ -45,6 +47,7 @@ function reduceMoney(e){
     let date = time.getDate();
     fulldate = date + '-'+ month +'-'+ year;
     var reduceList= {
+        id:getid(),
         rDate: fulldate,
         rTime: fulltime,
         reason: reduceReson,
@@ -110,6 +113,14 @@ function resetData(){
         
         
     }
+}
+
+
+//Unique Id generator 
+function getid(){
+    return Math.floor((1 + Math.random()) * 0x10000)
+    .toString(16)
+    .substring(1);
 }
 
 // Validation 
@@ -193,7 +204,7 @@ function fetchItemCustom(order){
     // Reverse item
     order==1?allItems.reverse(): allItems;
 
-    let count = 0;
+    let count = 1;
     
     
     if(localStorage.getItem("MyMoney") == null || localStorage.getItem("singleItem") == null ){
@@ -207,6 +218,7 @@ function fetchItemCustom(order){
     }
 
     for(item in allItems){
+        let id = allItems[item].id;
         let date = allItems[item].rDate;
         let time = allItems[item].rTime;
         let reson = allItems[item].reason;
@@ -220,9 +232,10 @@ function fetchItemCustom(order){
         <td>${time}</td>
         <td>${reson}</td>
         <td>-${ammount}/-</td>
+        <td><button value=${id} ${onclick=myfunc}>X</button></td>
       </tr>`;
       count++;
-      if(count==11){
+      if(count==12){
           break;
       }
     }
@@ -232,6 +245,10 @@ function fetchItemCustom(order){
 
 }
 
+
+function myfunc(e){
+    let id = e.target.value;
+}
 
 // Onload Get Current Balance
 function onload_funstions(){
@@ -255,7 +272,7 @@ function onload_funstions(){
 
 
 function getCurrentBalance(){
-    let getmyaccount = localStorage.getItem('MyMoney');
+   let getmyaccount = localStorage.getItem('MyMoney');
    let showBalance = document.getElementById('current-account');
    if(getmyaccount == null || getmyaccount == 0 ){
     showBalance.innerHTML = 0 +'/-';
